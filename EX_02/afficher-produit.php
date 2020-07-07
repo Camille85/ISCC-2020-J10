@@ -8,12 +8,14 @@ function connect_to_database(){
     try{
         $pdo = new PDO("mysql:host=$servername;dbname=$databasename", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+
+        echo "<ul>";
         foreach($pdo->query("SELECT * from produit") as $row){
-            print_r($row)   ;
-            echo "<br/>";
-            echo "<br/>";
-    }
+            echo "<li>";
+            echo ($row ["1"]);
+            echo "</li>";       
+    } echo "</ul>";
+
         return $pdo;
     } catch (PDOException $e){
         echo "Connection failed : " . $e->getMessage();
